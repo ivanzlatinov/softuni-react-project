@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button } from "./Button";
+import './Navbar.css';
 
 export const Navbar = () => {
     
     //state for dropdown menu
+    const [button, setButton] = useState(true);
+
 
 
     return (
+
    <>
    <nav className="navbar">
      <div className="navbar-container">
@@ -44,6 +49,7 @@ export const Navbar = () => {
             </Link>
         </li>
         </ul>
+       {/*  {button && <Button buttonStyle='btn--outline'>Register</Button>} */}
      </div>
    </nav>
    </>
