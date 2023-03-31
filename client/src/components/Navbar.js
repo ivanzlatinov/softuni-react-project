@@ -1,12 +1,12 @@
-import { useState } from "react";
+ //import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
+ //import { Button } from "./Button";
 import './Navbar.css';
 
 export const Navbar = () => {
     
     //state for dropdown menu
-    const [button, setButton] = useState(true);
+    //const [button, setButton] = useState(true);
 
 
 
@@ -15,7 +15,7 @@ export const Navbar = () => {
    <>
    <nav className="navbar">
      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+        <Link to="/home" className="navbar-logo">
             Travel Oasis 
         </Link>
         <div className="menu-icon">
@@ -24,7 +24,7 @@ export const Navbar = () => {
 
         <ul className="nav-menu">
         <li className="nav-item">
-            <Link to='/' className="nav-links" > 
+            <Link to='/home' className="nav-links" > 
             Home
             </Link>
         </li>
