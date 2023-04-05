@@ -44,6 +44,16 @@ export const Navbar = () => {
             </Link>
         </li>
         <li className="nav-item">
+            <Link to='/create-trip' className="nav-links" > 
+            Create your trip
+            </Link>
+        </li>
+        <li className="nav-item">
+            <Link to='/logout' className="nav-links" > 
+            Logout
+            </Link>
+        </li>
+        <li className="nav-item">
             <Link to='/register' className="nav-links" > 
             Register
             </Link>

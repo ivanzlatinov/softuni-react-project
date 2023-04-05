@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import './Login.css';
 
 export const Login = () => {
+  useEffect(() => {
+    document.title = 'Login'
+  }, [])
+
 
     return (
       <div className="body">
@@ -11,12 +16,12 @@ export const Login = () => {
         <div className="txt_field">
           <input type="text" required />
           <span></span>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
         </div>
         <div className="txt_field">
           <input type="password" required />
           <span></span>
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
         </div>
         
         <input type="submit" value="Login" />

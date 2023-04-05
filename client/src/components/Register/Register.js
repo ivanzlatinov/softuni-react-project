@@ -1,8 +1,12 @@
-
+import { useEffect } from 'react';
 import './Register.css'
 import  { Link } from 'react-router-dom'
 
 export const Register = () => {
+
+  useEffect(() => {
+    document.title = 'Register'
+  }, [])
 
     return (
         <div className='body'>
@@ -12,22 +16,22 @@ export const Register = () => {
           <div className="txt_field">
             <input type="text" required />
             <span></span>
-            <label>Email</label>
+            <label htmlFor='email'>Email</label>
           </div>
           <div className="txt_field">
             <input type="text" required />
             <span></span>
-            <label>Username</label>
+            <label htmlFor='username'>Username</label>
           </div>
           <div className="txt_field">
             <input type="password" required />
             <span></span>
-            <label>Password</label>
+            <label htmlFor='password'>Password</label>
           </div>
           <div className="txt_field">
               <input type="repass" required />
               <span></span>
-              <label>Repeat password</label>
+              <label htmlFor='repass'>Repeat password</label>
             </div>
           
           <input type="submit" value="Register" />

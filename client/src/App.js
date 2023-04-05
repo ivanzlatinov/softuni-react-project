@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Home } from './components/pages/Home';
-import { Navbar } from './components/Navbar';
-import { Login } from './components/pages/Login';
-import { Footer } from './components/Footer';
-import { Register } from './components/pages/Register';
-import { NotFound } from './components/pages/NotFound'; 
+import { Home } from './components/Home/Home';
+import { Navbar } from './components/Navbar/Navbar';
+import { Login } from './components/Login/Login';
+import { Footer } from './components/Footer/Footer';
+import { Register } from './components/Register/Register';
+import { NotFound } from './components/NotFound/NotFound'; 
 
 
 
@@ -24,7 +24,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/catalog' element={<h1>catalog</h1>} />
         <Route path='/about' element={<h1>About</h1>} />
-        <Route path='/create' element={<h1>create</h1>} />
+        <Route path='/create-trip' element={<h1>create</h1>} />
         <Route path='/login' element={ <Login />} /> 
         <Route path='/register' element={<Register />} />
         <Route path='/*' element={<NotFound />} />
