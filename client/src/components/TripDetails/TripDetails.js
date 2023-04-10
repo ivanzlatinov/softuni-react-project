@@ -1,28 +1,45 @@
-import { Link } from 'react-router-dom';
-import './TripDetails.css'
+import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import './TripDetails.css';
+import * as tripService from '../../services/tripService';
 
 export const TripDetails = () =>  {
+
+    useEffect(() => {
+        document.title = "Details";
+      }, []);
+
+    const { tripId } = useParams();
+    const [trip, setTrip] = useState({});
+   
+    useEffect(() => {
+    tripService.getOne(tripId)
+    .then(result => {
+      setTrip(result)
+    })
+    }, [tripId])
+
 return (
     <div className="details-container">
     <div className="details-box">
         <div className="details-images">
             <div className="details-img-holder active">
-                <img src="../img/milano.jpg" />
+                <img src={trip.imgUrl} />
             </div>
             
         </div>
         <div className="details-basic-info">
-            <h1 className='details-destination'>Title</h1>
+            <h1 className='details-destination'>{trip.destination}</h1>
            
-            <span>Price: </span>
-            <p>Offer is for : N people</p>
+            <span>Price: {trip.price}$ </span>
+            <p>Offer is for : {trip.people} people</p>
             <div className="details-options">
                 <Link href="#">Book trip</Link>
             </div>
         </div>
         <div className="details-description">
-            <p> Phone for contacts:  </p>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus temporibus corporis repudiandae, consectetur nostrum nisi commodi placeat rerum molestias numquam nihil accusantium deleniti! Enim, nesciunt a quis amet hic officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae nemo accusantium tempora facere doloremque cum iusto, ut neque, fuga omnis libero laborum ullam. At dolorum qui atque labore illo dignissimos.</p>
+            <p> Phone for contact: {trip.phone} </p>
+            <p>{trip.description}</p>
             
         </div>
         <div className="details-phone">

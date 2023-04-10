@@ -29,7 +29,7 @@ function App() {
    useEffect(() => {
      tripService.getAll()
      .then(result => {
-      console.log(result)
+      
       setTrips(result);
      })
    }, [])

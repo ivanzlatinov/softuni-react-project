@@ -10,10 +10,16 @@ export const getAll =  async () => {
    return trips;
 }
 
+export const getOne = async (tripId) => {
+   const result = await request.get(`${baseUrl}/${tripId}`);
+   console.log(result);
+   return result
+}
+
 export const create = async (tripData) => {
  const result = await request.post(baseUrl, tripData);
 
- console.log(result);
+ 
 
  return result;
 }
