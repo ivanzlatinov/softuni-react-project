@@ -5,10 +5,13 @@ import "./Create.css";
 export const Create = ({
   onCreateTripSubmit
 }) => {
+
+
   useEffect(() => {
-    document.title = "Host a trip";
+    document.title = "Create page";
   }, []);
 
+  
   const [values, setValues] = useState({
      title: '',
      destination: '',

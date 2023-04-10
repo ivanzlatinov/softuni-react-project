@@ -1,0 +1,102 @@
+.details-container {
+    font-family: 'PT Sans', sans-serif;
+    box-sizing: border-box;
+    background-color: rgb(37, 34, 34);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 1px rgb(0, 0, 0, 12%);
+    padding: 25px;
+    margin: 15px 0;
+    width: 950px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "images info"
+    "images description";
+    
+}
+
+ 
+
+
+.details-box .details-images .details-img-holder img {
+    width: 400px;
+    height: 250px;
+    display: block;
+    border-radius: 10px;
+}
+
+.details-box .details-images .details-img-holder.active {
+    grid-area: active;
+}
+
+.details-box .details-images .details-img-holder:not(.active):hover {
+    opacity: 0.95;
+    cursor: pointer;
+}
+
+.details-box .details-basic-info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+
+.details-box .details-basic-info span {
+    font-weight: 800;
+    font-size: 25px;
+}
+
+.details-box .details-basic-info .details-options a {
+    color: white;
+    background-color: rgb(37, 34, 34);
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.details-box .details-basic-info .details-options a:hover {
+    background-color: black;
+}
+
+.details-box .details-description {
+    grid-area: description;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.details-box .details-description p {
+    color: #808080;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.details-box .details-description .details-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #808080;
+}
+
+.details-box .details-description .details-features i {
+    margin-right: 5px;
+}
+
+.details-destination{
+    padding-right: 400px;
+}

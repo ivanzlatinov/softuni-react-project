@@ -1,9 +1,16 @@
 import "./Catalog.css";
 import { CardItem } from "./CardItem/CardItem";
+import { useEffect } from "react";
 
 export const Catalog = ({ 
     trips 
 }) => {
+
+  useEffect(() => {
+    document.title = "Catalog";
+  }, []);
+
+
   return (
     <div className="catalog-background">
       <div className="title-container">

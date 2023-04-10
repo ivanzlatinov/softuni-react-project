@@ -13,6 +13,7 @@ import { NotFound } from './components/NotFound/NotFound';
 import { About } from './components/About/About';
 import { Create } from './components/Create/Create';
 import { Catalog } from './components/Catalog/Catalog';
+import { TripDetails } from './components/TripDetails/TripDetails';
 
 
 
@@ -52,6 +53,7 @@ function App() {
         <Route path='/create-trip' element={<Create onCreateTripSubmit={onCreateTripSubimt} />} />
         <Route path='/login' element={ <Login />} /> 
         <Route path='/register' element={<Register />} />
+        <Route path='/catalog/:tripId' element={<TripDetails />} />
         <Route path='/*' element={<NotFound />} />
         </Routes> 
         <Footer />
