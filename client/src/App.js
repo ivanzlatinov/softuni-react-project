@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
 import * as tripService from './services/tripService';
@@ -17,10 +17,11 @@ import { Catalog } from './components/Catalog/Catalog';
 
 
 function App() {
-
   useEffect(() => {
     document.title = 'Travel'
   }, [])
+
+  const navigate = useNavigate();
 
    const [trips, setTrips] = useState([]);
    
@@ -32,6 +33,14 @@ function App() {
      })
    }, [])
 
+   const onCreateTripSubimt = async (data) => {
+    const newTrip = await tripService.create(data);
+      
+    setTrips(state => [...state, newTrip])      //updated info
+   
+     navigate('/catalog')
+   }
+
   return (
     <>
        <Navbar />
@@ -40,7 +49,7 @@ function App() {
         <Route path='/home' element={<Home />} />
         <Route path='/catalog' element={<Catalog trips={trips} />} />
         <Route path='/about' element={<About />} />
-        <Route path='/create-trip' element={<Create />} />
+        <Route path='/create-trip' element={<Create onCreateTripSubmit={onCreateTripSubimt} />} />
         <Route path='/login' element={ <Login />} /> 
         <Route path='/register' element={<Register />} />
         <Route path='/*' element={<NotFound />} />

@@ -1,7 +1,9 @@
 import "./Catalog.css";
-import { CardItem } from "../util/CardItem";
+import { CardItem } from "./CardItem/CardItem";
 
-export const Catalog = ({ trips }) => {
+export const Catalog = ({ 
+    trips 
+}) => {
   return (
     <div className="catalog-background">
       <div className="title-container">
@@ -9,37 +11,18 @@ export const Catalog = ({ trips }) => {
       </div>
       <div className="all-trips">
         <CardItem
-          src="images/img-9.jpg"
-          text="Explore the hidden waterfall inside the Amazon Jungle"
-          label="Adventure"
+          imgUrl="images/img-9.jpg"
+          title="Explore the hidden waterfall inside the Amazon Jungle"
           path="/catalog"
         />
 
         <CardItem
-          src="images/img-2.jpg"
-          text="Travel through the islands of Bali in a private cruise"
-          label="Luxury"
+          imgUrl="images/img-2.jpg"
+          title="Travel through the islands of Bali in a private cruise"
           path="/catalog"
         />
 
-        <CardItem
-          src="images/img-3.jpg"
-          text="Set Sail in the Atlantic Ocean visiting Uncharted Waters"
-          label="Mystery"
-          path="/services"
-        />
-        <CardItem
-          src="images/img-4.jpg"
-          text="Experience Football on Top of the Himilayan Mountains"
-          label="Adventure"
-          path="/products"
-        />
-        <CardItem
-          src="images/img-8.jpg"
-          text="Ride through the Sahara Desert on a guided camel tour"
-          label="Adrenaline"
-          path="/sign-up"
-        />
+        {trips.map(x => <CardItem key={x._id} {...x} />)}
       </div>
     </div>
   );

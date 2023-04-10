@@ -9,3 +9,11 @@ export const getAll =  async () => {
 
    return trips;
 }
+
+export const create = async (tripData) => {
+ const result = await request.post(baseUrl, tripData);
+
+ console.log(result);
+
+ return result;
+}
