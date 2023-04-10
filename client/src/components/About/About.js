@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import "./About.css";
 
 export const About = () => {
+
+    useEffect(() => {
+        document.title = 'About Us'
+      }, [])
+
   return (
     <section className="about">
       <div className="main">

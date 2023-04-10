@@ -1,0 +1,19 @@
+.catalog-background {
+    background: rgb(37, 34, 34);
+    height: 1500px;
+}
+
+.title-container{
+    padding: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: aliceblue;
+    
+}
+
+.all-trips{
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    gap: 150px;
+    justify-content: center;
+    padding-top: 50px;
+}
