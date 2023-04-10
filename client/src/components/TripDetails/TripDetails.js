@@ -19,6 +19,7 @@ export const TripDetails = () =>  {
     })
     }, [tripId])
 
+    
 return (
     <div className="details-container">
     <div className="details-box">
