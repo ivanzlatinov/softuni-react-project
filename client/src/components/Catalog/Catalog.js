@@ -20,13 +20,13 @@ export const Catalog = ({
         <CardItem
           imgUrl="images/img-9.jpg"
           title="Explore the hidden waterfall inside the Amazon Jungle"
-          path="/catalog"
+          
         />
 
         <CardItem
           imgUrl="images/img-2.jpg"
           title="Travel through the islands of Bali in a private cruise"
-          path="/catalog"
+          
         />
 
         {trips.map(x => <CardItem key={x._id} {...x} />)}

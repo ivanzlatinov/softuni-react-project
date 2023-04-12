@@ -12,20 +12,20 @@ export const TripDetails = () =>  {
     const { tripId } = useParams();
     const [trip, setTrip] = useState({});
    
-    useEffect(() => {
+    useEffect(() => { 
     tripService.getOne(tripId)
     .then(result => {
       setTrip(result)
     })
     }, [tripId])
 
-    
+
 return (
     <div className="details-container">
     <div className="details-box">
         <div className="details-images">
             <div className="details-img-holder active">
-                <img src={trip.imgUrl} />
+                <img src={trip.imgUrl} alt='details' />
             </div>
             
         </div>

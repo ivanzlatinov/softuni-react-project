@@ -16,10 +16,13 @@
 
   try {
     const result =  await response.json();
-    return result
+    if(!response.ok){
+      throw result
+    }
+    return result;
 
   } catch (error) {
-
+    
     return {};
  
 }

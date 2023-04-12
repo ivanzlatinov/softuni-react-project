@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { useForm } from "../../hooks/useForm";
 import './Login.css';
 
 export const Login = () => {
@@ -7,19 +10,41 @@ export const Login = () => {
     document.title = 'Login'
   }, [])
 
+ 
+  const { onLoginSubmit } = useContext(AuthContext);
+  const {values, changeHandler, onSubmit} = useForm({
+    email: '',
+    password: '',
+  }, onLoginSubmit)
+
+  
 
     return (
       <div className="body">
         <div className="center">
       <h1>Login</h1>
-      <form method="post">
+      <form id="login" method="POST" onSubmit={onSubmit}>
         <div className="txt_field">
-          <input type="text" required />
+          <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          required 
+          value={values.email}
+          onChange={changeHandler}
+          />
           <span></span>
           <label htmlFor="email">Email</label>
         </div>
         <div className="txt_field">
-          <input type="password" required />
+          <input 
+          type="password" 
+          id="login-password" 
+          name="password" 
+          required 
+          value={values.password}
+          onChange={changeHandler}
+          />
           <span></span>
           <label htmlFor="password">Password</label>
         </div>
