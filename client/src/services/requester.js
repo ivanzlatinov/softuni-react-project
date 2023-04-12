@@ -14,15 +14,19 @@
   
   const response = await fetch(url, options);
 
+  if(!response.ok){
+    const result = await response.json();
+
+    throw result
+  }
+
   try {
     const result =  await response.json();
-    if(!response.ok){
-      throw result
-    }
+   
     return result;
 
   } catch (error) {
-    
+    //No content response for create page
     return {};
  
 }

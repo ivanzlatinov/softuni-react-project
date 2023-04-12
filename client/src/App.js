@@ -49,6 +49,8 @@ function App() {
           const result = await authService.login(data);
 
           setAuth(result);
+
+          navigate('/catalog');
         } catch (error) {
           //alert user
           console.log('There is a problem')
@@ -57,9 +59,17 @@ function App() {
 
     
    };
+   const context = {
+    onLoginSubmit,
+    userId: auth._id,
+    accessToken: auth.accessToken,
+    userEmail: auth.email,
+    isAuthenticated: !!auth.accessToken, // turns truthy value to true
+    
+   }
 
   return (
-    <AuthContext.Provider value={{onLoginSubmit}}>
+    <AuthContext.Provider value={context}>
     <>
        <Navbar />
         <Routes>
