@@ -66,10 +66,38 @@
     font-weight: 500;
     font-size: 18px;
     border-radius: 5px;
+    margin: 6px;
 }
+
 
 .details-box .details-basic-info .details-options a:hover {
     background-color: black;
+}
+
+.details-box .details-basic-info .details-options .edit-btn{
+    background-color: rgb(17, 116, 17);
+}
+
+.details-box .details-basic-info .details-options button {
+    color: white;
+    background-color: rgb(37, 34, 34);
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    border: 0px;
+    border-radius: 5px;
+    margin: 6px;
+    
+}
+
+.details-box .details-basic-info .details-options button:hover {
+    background-color: black;
+}
+
+.details-box .details-basic-info .details-options .delete-btn{
+    background-color: red;
 }
 
 .details-box .details-description {

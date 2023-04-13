@@ -14,7 +14,7 @@ export const HeroSection = () => {
                 Browse our catalog
                 </Link>
 
-            <Link to='/create' className="btns btn--outline btn--large" >
+            <Link to='/create-trip' className="btns btn--outline btn--large" >
                 Create your trip
                 </Link>
 

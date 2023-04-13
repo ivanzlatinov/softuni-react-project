@@ -17,18 +17,7 @@ export const Catalog = ({
         <h1 className="catalog-title">Our offers</h1>
       </div>
       <div className="all-trips">
-        <CardItem
-          imgUrl="images/img-9.jpg"
-          title="Explore the hidden waterfall inside the Amazon Jungle"
-          
-        />
-
-        <CardItem
-          imgUrl="images/img-2.jpg"
-          title="Travel through the islands of Bali in a private cruise"
-          
-        />
-
+      
         {trips.map(x => <CardItem key={x._id} {...x} />)}
       </div>
     </div>

@@ -1,6 +1,6 @@
 import { requestFactory } from './requester'
 
-const baseUrl = 'http://localhost:3030/data/trips'  //jsonstore
+const baseUrl = 'http://localhost:3030/data/trips'  
 
 
 export const tripServiceFactory = (token) => {
@@ -16,7 +16,7 @@ const getAll =  async () => {
 
  const getOne = async (tripId) => {
    const result = await request.get(`${baseUrl}/${tripId}`);
-   console.log(result);
+   
    return result
 }
 
@@ -26,9 +26,16 @@ const getAll =  async () => {
  return result;
 }
 
+const edit = (tripId, data) => request.put(`${baseUrl}/${tripId}`, data);
+
+const deleteTrip = (tripId) => request.delete(`${baseUrl}/${tripId}`)
+
 return {
    getAll,
    getOne,
-   create
+   create,
+   edit,
+   delete: deleteTrip,
+   
 };
 }

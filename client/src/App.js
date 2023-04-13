@@ -18,6 +18,7 @@ import { About } from './components/About/About';
 import { Create } from './components/Create/Create';
 import { Catalog } from './components/Catalog/Catalog';
 import { TripDetails } from './components/TripDetails/TripDetails';
+import { EditTrip } from './components/EditTrip/EditTrip';
 
 
 
@@ -29,8 +30,8 @@ function App() {
   const navigate = useNavigate();
    const [trips, setTrips] = useState([]);
    const [auth, setAuth] = useState({});
-   const tripService = tripServiceFactory(auth.token);
-   const authService = authServiceFactory(auth.token);
+   const tripService = tripServiceFactory(auth.accessToken);
+   const authService = authServiceFactory(auth.accessToken);
    
    useEffect(() => {
      tripService.getAll()
@@ -85,6 +86,14 @@ function App() {
       setAuth({})
     }
 
+    const onTripEditSubmit = async (values) => {
+      const result = await tripService.edit(values._id, values);
+
+      setTrips(state => state.map(x => x._id === values._id ? result : x))
+
+      navigate(`/catalog/${values._id}`);
+    } 
+
 
    const context = {
     onLoginSubmit,
@@ -111,6 +120,7 @@ function App() {
         <Route path='/logout' element={ <Logout  />} /> 
         <Route path='/register' element={<Register />} />
         <Route path='/catalog/:tripId' element={<TripDetails />} />
+        <Route path='/catalog/:tripId/edit' element={<EditTrip onTripEditSubmit={onTripEditSubmit}/>} />
         <Route path='/*' element={<NotFound />} />
         </Routes> 
         <Footer />

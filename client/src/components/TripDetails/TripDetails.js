@@ -1,9 +1,8 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import './TripDetails.css';
 import { tripServiceFactory } from '../../services/tripService';
 import { useService } from '../../hooks/useService';
-import { authServiceFactory } from '../../services/authService';
 import { AuthContext } from '../../contexts/AuthContext';
 
 export const TripDetails = () =>  {
@@ -12,10 +11,12 @@ export const TripDetails = () =>  {
         document.title = "Details";
       }, []);
 
-    const { tripId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);  
+    const { tripId } = useParams();
     const [trip, setTrip] = useState({});
     const tripService = useService(tripServiceFactory);
-   
+    const navigate = useNavigate();
+    
    
     useEffect(() => { 
     tripService.getOne(tripId)
@@ -24,6 +25,17 @@ export const TripDetails = () =>  {
     })
     }, [tripId])
 
+    const isOwner =  trip._ownerId === userId;
+
+    const onDeleteClick =  async () => {
+        //confirm on delete
+        tripService.delete(trip._id);
+    
+    // delete from state
+
+        navigate('/catalog');
+        
+    }
 
 return (
     <div className="details-container">
@@ -39,9 +51,18 @@ return (
            
             <span>Price: {trip.price}$ </span>
             <p>Offer is for : {trip.people} people</p>
-            <div className="details-options">
-                <Link href="#">Book trip</Link>
+            {isOwner && (
+                <div className="details-options">
+                  <Link to={`/catalog/${trip._id}/edit`}  className='edit-btn' >Edit</Link>
+                <button className='delete-btn' onClick={onDeleteClick}>Delete</button>
             </div>
+            )}
+            {!isOwner && (
+            <div className="details-options">
+            <Link href="#">Book trip</Link>
+        </div>
+            )}
+           
         </div>
         <div className="details-description">
             <p> Phone for contact: {trip.phone} </p>

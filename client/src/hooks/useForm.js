@@ -8,16 +8,25 @@ export const useForm = (initialValues, onSubmitHandler) => {
        setValues(state => ({...state, [e.target.name]: e.target.value}));
     };
 
+   
+
     const onSubmit = (e) => {
     e.preventDefault();
 
    onSubmitHandler(values)
     }
 
+   const changeValues = (newValues) => {
+    //todo: validate newValues shape (like initialValues)
+    
+    setValues(newValues)
+   }
+
     return {
         values,
         changeHandler,
         onSubmit,
+        changeValues
     };
 
 }

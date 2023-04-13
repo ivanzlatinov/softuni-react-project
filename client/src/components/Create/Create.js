@@ -46,12 +46,12 @@ export const Create = ({
 
         <div className="inputfield">
           <label htmlFor="price">Price</label>
-          <input value={values.price} onChange={changeHandler} type="number" id="price" name="price" className="input" />
+          <input value={values.price} onChange={changeHandler} type="text" id="price" name="price" className="input" />
         </div>
 
         <div className="inputfield">
           <label htmlFor="people">Number of people</label>
-          <input value={values.people} onChange={changeHandler} type="number" id="people" name="people" className="input" />
+          <input value={values.people} onChange={changeHandler} type="text" id="people" name="people" className="input" />
         </div>
 
         <div className="inputfield">
