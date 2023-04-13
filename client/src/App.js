@@ -111,8 +111,8 @@ function App() {
     <>
        <Navbar />
         <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Home trips={trips} />} />
+        <Route path='/home' element={<Home trips={trips} />} />
         <Route path='/catalog' element={<Catalog trips={trips} />} />
         <Route path='/about' element={<About />} />
         <Route path='/create-trip' element={<Create onCreateTripSubmit={onCreateTripSubimt} />} />

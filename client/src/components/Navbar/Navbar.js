@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import './Navbar.css';
 
 export const Navbar = () => {
-    const { isAuthenticated, UserEmail } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext); //useEmail
 
 
     return (
@@ -16,7 +16,7 @@ export const Navbar = () => {
             Travel Oasis 
         </Link>
         <div className="menu-icon">
-            {/* fontawesome icon */}
+            
         </div>
 
         <ul className="nav-menu">
