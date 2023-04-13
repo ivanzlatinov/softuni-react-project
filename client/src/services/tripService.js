@@ -1,8 +1,12 @@
-import * as request from './requester'
+import { requestFactory } from './requester'
 
-const baseUrl = 'http://localhost:3030/jsonstore/trips'
+const baseUrl = 'http://localhost:3030/data/trips'  //jsonstore
 
-export const getAll =  async () => {
+
+export const tripServiceFactory = (token) => {
+const request = requestFactory(token);
+
+const getAll =  async () => {
    const result = await request.get(baseUrl);
    const trips = Object.values(result) ; // key is id 
    
@@ -10,16 +14,21 @@ export const getAll =  async () => {
    return trips;
 }
 
-export const getOne = async (tripId) => {
+ const getOne = async (tripId) => {
    const result = await request.get(`${baseUrl}/${tripId}`);
    console.log(result);
    return result
 }
 
-export const create = async (tripData) => {
+ const create = async (tripData) => {
  const result = await request.post(baseUrl, tripData);
 
- 
-
  return result;
+}
+
+return {
+   getAll,
+   getOne,
+   create
+};
 }

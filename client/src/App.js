@@ -2,15 +2,17 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
-import * as tripService from './services/tripService';
-import * as authService from './services/authService';
+import { tripServiceFactory } from './services/tripService';
+import { authServiceFactory } from './services/authService';
 import { AuthContext } from './contexts/AuthContext';
+
 
 import { Home } from './components/Home/Home';
 import { Navbar } from './components/Navbar/Navbar';
 import { Login } from './components/Login/Login';
 import { Footer } from './components/Footer/Footer';
 import { Register } from './components/Register/Register';
+import { Logout } from './components/Logout/Logout';
 import { NotFound } from './components/NotFound/NotFound'; 
 import { About } from './components/About/About';
 import { Create } from './components/Create/Create';
@@ -26,21 +28,22 @@ function App() {
 
   const navigate = useNavigate();
    const [trips, setTrips] = useState([]);
-   const [auth, setAuth] = useState({})
+   const [auth, setAuth] = useState({});
+   const tripService = tripServiceFactory(auth.token);
+   const authService = authServiceFactory(auth.token);
    
    useEffect(() => {
      tripService.getAll()
      .then(result => {
-      
       setTrips(result);
      })
-   }, [])
+   }, []);
 
    const onCreateTripSubimt = async (data) => {
     const newTrip = await tripService.create(data);
       
     setTrips(state => [...state, newTrip])      //updated info
-   
+   console.log(newTrip);
      navigate('/catalog');
    };
 
@@ -50,19 +53,45 @@ function App() {
 
           setAuth(result);
 
-          navigate('/catalog');
+          navigate('/');
         } catch (error) {
           //alert user
           console.log('There is a problem')
 
         }
-
-    
    };
+ 
+    const onRegisterSubmit = async (values) => {
+     const {repass, ...registerData} = values;
+     if(repass !== registerData.password) {
+      return;
+     }
+      
+     try {
+      console.log(registerData);
+      const result =  await authService.register(registerData);
+      console.log(result) 
+      setAuth(result);
+
+      navigate('/');
+     } catch (error) {
+      console.log('There is a problem')
+     }
+    }
+   
+    const onLogout =  async () => {
+      await authService.logout();
+
+      setAuth({})
+    }
+
+
    const context = {
     onLoginSubmit,
+    onRegisterSubmit,
+    onLogout,
     userId: auth._id,
-    accessToken: auth.accessToken,
+    token: auth.accessToken,
     userEmail: auth.email,
     isAuthenticated: !!auth.accessToken, // turns truthy value to true
     
@@ -79,6 +108,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/create-trip' element={<Create onCreateTripSubmit={onCreateTripSubimt} />} />
         <Route path='/login' element={ <Login  />} /> 
+        <Route path='/logout' element={ <Logout  />} /> 
         <Route path='/register' element={<Register />} />
         <Route path='/catalog/:tripId' element={<TripDetails />} />
         <Route path='/*' element={<NotFound />} />

@@ -1,7 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './TripDetails.css';
-import * as tripService from '../../services/tripService';
+import { tripServiceFactory } from '../../services/tripService';
+import { useService } from '../../hooks/useService';
+import { authServiceFactory } from '../../services/authService';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const TripDetails = () =>  {
 
@@ -9,8 +12,10 @@ export const TripDetails = () =>  {
         document.title = "Details";
       }, []);
 
-    const { tripId } = useParams();
+    const { tripId } = useContext(AuthContext);
     const [trip, setTrip] = useState({});
+    const tripService = useService(tripServiceFactory);
+   
    
     useEffect(() => { 
     tripService.getOne(tripId)
