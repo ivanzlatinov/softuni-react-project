@@ -14,10 +14,19 @@ export const Create = ({
   useEffect(() => {
     document.title = "Create page";
   }, []);
-   const { onCreateTripSubmit } = useTripContext(); 
+   const { createTripSubmit } = useTripContext(); 
    
+  const { values, changeHandler, onSubmit } = useForm({
+     title: '',
+     destination: '',
+     price: '',
+     people: '',
+     imgUrl: '',
+     description: '',
+     phone: '',
+  }, createTripSubmit)
 
-   const [error, setError] = useState({
+  const [error, setError] = useState({
     title: '',
     destination: '',
     price: '',
@@ -27,17 +36,6 @@ export const Create = ({
     phone: '',
 
    })
-
-
-  const { values, changeHandler, onSubmit } = useForm({
-     title: '',
-     destination: '',
-     price: '',
-     people: '',
-     imgUrl: '',
-     description: '',
-     phone: '',
-  }, onCreateTripSubmit)
 
 
   const validateTitle = (e) => {

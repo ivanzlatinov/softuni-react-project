@@ -9,8 +9,8 @@ export const UserGuard = () => {
     const { isAuthenticated} = useContext(AuthContext)
 
 
-    if(!isAuthenticated) {
-        return <Navigate to='/login'/>
+    if(isAuthenticated) {
+        return <Navigate to='/home'/>
     }
    
 

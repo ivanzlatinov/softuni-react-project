@@ -49,3 +49,4 @@ export const requestFactory = () => {
         delete: requester.bind(null, 'DELETE'),
     }
 };
+

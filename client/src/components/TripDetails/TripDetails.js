@@ -4,6 +4,7 @@ import './TripDetails.css';
 import { tripServiceFactory } from '../../services/tripService';
 import { useService } from '../../hooks/useService';
 import { AuthContext } from '../../contexts/AuthContext';
+import { useTripContext } from '../../contexts/TripContext';
 
 export const TripDetails = () =>  {
 
@@ -11,6 +12,7 @@ export const TripDetails = () =>  {
         document.title = "Details";
       }, []);
 
+    const { deleteTrip } = useTripContext();
     const { userId } = useContext(AuthContext);  
     const { tripId } = useParams();
     const [trip, setTrip] = useState({});
@@ -28,12 +30,18 @@ export const TripDetails = () =>  {
     const isOwner =  trip._ownerId === userId;
 
     const onDeleteClick =  async () => {
-        //confirm on delete
-        tripService.delete(trip._id);
-    
-    // delete from state
+        //eslint-disable-next-line no-restricted-globals
+        const conformationGiven = confirm('Are you sure you want to delete your booking')
+        //showDeleteModal
+        console.log(conformationGiven)
+        
+        
+         if(conformationGiven){
+             await tripService.delete(trip._id);
+             deleteTrip(trip._id);
+             navigate('/catalog');
+         }
 
-        navigate('/catalog');
         
     }
 

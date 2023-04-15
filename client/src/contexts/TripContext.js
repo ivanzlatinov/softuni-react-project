@@ -22,7 +22,7 @@ export const TripProvider = ({
    
     
 
-    const onCreateTripSubimt = async (data) => {
+    const createTripSubmit = async (data) => {
         const newTrip = await tripService.create(data);
           
         setTrips(state => [...state, newTrip])      //updated info
@@ -31,7 +31,9 @@ export const TripProvider = ({
        };
     
       
-     
+     const getTrip = (tripId) => {
+        return trips.find(trip => trip._id === tripId)
+     }
         
         const onTripEditSubmit = async (values) => {
           const result = await tripService.edit(values._id, values);
@@ -40,11 +42,17 @@ export const TripProvider = ({
     
           navigate(`/catalog/${values._id}`);
         } 
+
+        const deleteTrip = (tripId) => {
+            setTrips(state => state.filter(trip => trip._id !== tripId))
+        }
     
     const contextValues = {
         trips,
-        onCreateTripSubimt ,
-        onTripEditSubmit
+        createTripSubmit ,
+        onTripEditSubmit,
+        getTrip,
+        deleteTrip
 
 
     }

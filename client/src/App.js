@@ -19,7 +19,7 @@ import { TripDetails } from './components/TripDetails/TripDetails';
 import { EditTrip } from './components/EditTrip/EditTrip';
 import { UserGuard } from './components/Guards/UserGuard';
 import { PublicGuard } from './components/Guards/PublicGuard';
-
+import { Owner } from './components/Guards/OwnerGuard';
 
 
 
@@ -32,22 +32,23 @@ function App() {
     <>
        <Navbar />
         <Routes>
-        <Route path='/' element={<Home  />} />
-        <Route path='/home' element={<Home  />} />
-        <Route path='/catalog' element={<Catalog />} />
-        <Route path='/about' element={<About />} />
-        <Route element={<PublicGuard />}>
-          <Route path='/login' element={ <Login  />} /> 
-          <Route path='/register' element={<Register />} />
-        </Route>
+            <Route path='/' element={<Home  />} />
+            <Route path='/home' element={<Home  />} />
+            <Route path='/catalog' element={<Catalog />} />
+            <Route path='/about' element={<About />} />
         <Route element={<UserGuard />}>
-          <Route path='/create-trip' element={<Create  />} />
-          <Route path='/catalog/:tripId' element={<TripDetails />} />
-          <Route path='/logout' element={ <Logout  />} /> 
-        <Route elemen ></Route>
-        <Route path='/catalog/:tripId/edit' element={<EditTrip />} />
+            <Route path='/login' element={ <Login  />} /> 
+            <Route path='/register' element={<Register />} />
         </Route>
-        <Route path='/*' element={<NotFound />} />
+        <Route element={<PublicGuard />}>
+            <Route path='/create-trip' element={<Create  />} />
+            <Route path='/catalog/:tripId' element={<TripDetails />} />
+            <Route path='/logout' element={ <Logout  />} /> 
+        <Route element={<Owner />} >
+             <Route path='/catalog/:tripId/edit' element={<EditTrip />} />
+        </Route>
+        </Route>
+             <Route path='/*' element={<NotFound />} />
         </Routes> 
         <Footer />
        

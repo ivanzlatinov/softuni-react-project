@@ -9,8 +9,8 @@ export const PublicGuard = () => {
     const { isAuthenticated} = useContext(AuthContext)
 
 
-    if(isAuthenticated) {
-        return <Navigate to='/home'/>
+    if(!isAuthenticated) {
+        return <Navigate to='/login'/>
     }
    
 
