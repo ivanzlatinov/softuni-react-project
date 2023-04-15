@@ -1,15 +1,16 @@
 import "./Catalog.css";
 import { CardItem } from "./CardItem/CardItem";
 import { useEffect } from "react";
+import { useTripContext } from "../../contexts/TripContext";
 
 export const Catalog = ({ 
-    trips 
+  
 }) => {
-
   useEffect(() => {
     document.title = "Catalog";
   }, []);
-
+  
+  const { trips } = useTripContext();
 
   return (
     <div className="catalog-background">

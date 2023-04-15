@@ -4,10 +4,12 @@ import { useForm } from '../../hooks/useForm';
 import { useService } from '../../hooks/useService';
 import { tripServiceFactory } from '../../services/tripService';
 import './EditTrip.css'
+import { useTripContext } from '../../contexts/TripContext';
 
 export const EditTrip = ({
-    onTripEditSubmit,
+    
 }) => {
+  const { onTripEditSubmit } = useTripContext();
      const { tripId } = useParams();
      const tripService = useService(tripServiceFactory)
     const {values, changeHandler, onSubmit, changeValues} = useForm({

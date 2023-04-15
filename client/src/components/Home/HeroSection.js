@@ -15,15 +15,11 @@ export const HeroSection = () => {
         <h1>ADVENTURE AWAITS</h1>
         <p>What are you waiting for?</p>
         <div className="hero-btns">
-            {isAuthenticated ? 
-            <Link to='/catalog' className="btns btn--outline btn--large" >
+            
+        <Link to='/catalog' className="btns btn--outline btn--large" >
             Browse our catalog
             </Link>
-            :
-            <Link to='/login' className="btns btn--outline btn--large" >
-                Browse our catalog
-                </Link>
-                }
+             
             {isAuthenticated ?
               <Link to='/create-trip' className="btns btn--outline btn--large" >
               Create your trip

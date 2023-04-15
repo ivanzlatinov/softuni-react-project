@@ -153,3 +153,9 @@
   .wrapper .form .inputfield:last-child{
     margin-bottom: 0;
   }
+
+  .error{ 
+    color: red;
+    font-size: 15px;
+    margin-left: 150px;
+  }

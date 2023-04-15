@@ -1,14 +1,17 @@
 import '../../App.css';
-import { Cards } from '../util/Cards';
+import { Cards } from './Cards';
 import { useEffect } from 'react';
-import { HeroSection } from '../util/HeroSection';
+import { HeroSection } from './HeroSection';
+import { useTripContext } from '../../contexts/TripContext';
 
 export const Home = ({
-    trips
+
 }) => {
     useEffect(() => {
-        document.title = 'Travel'
+        document.title = 'Travel Oasis'
       }, [])
+
+      const { trips } = useTripContext();
 
     return (
         <>

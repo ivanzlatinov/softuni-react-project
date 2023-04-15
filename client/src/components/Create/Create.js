@@ -3,18 +3,32 @@ import { useEffect, useState } from "react";
 import { useForm } from '../../hooks/useForm';
 
 import "./Create.css";
+import { useTripContext } from "../../contexts/TripContext";
 
 
 export const Create = ({
-  onCreateTripSubmit
+  
 }) => {
 
 
   useEffect(() => {
     document.title = "Create page";
   }, []);
+   const { onCreateTripSubmit } = useTripContext(); 
+   
 
-  
+   const [error, setError] = useState({
+    title: '',
+    destination: '',
+    price: '',
+    people: '',
+    imgUrl: '',
+    description: '',
+    phone: '',
+
+   })
+
+
   const { values, changeHandler, onSubmit } = useForm({
      title: '',
      destination: '',
@@ -26,19 +40,70 @@ export const Create = ({
   }, onCreateTripSubmit)
 
 
+  const validateTitle = (e) => {
+    const title = e.target.value;
+
+    let errorMessage = '';
+
+    if(title.length === 0) {
+      errorMessage = 'Please give a title.'
+     
+    }else if(title.length < 10) {
+      errorMessage = 'Title must be atleast 10 characters.'
+    }else if(title.length > 50){
+      errorMessage = 'Title should not be longer than 50 characters.'
+    }
+
+    setError(state => ({
+      ...state,
+      title: errorMessage,
+    }))
+  }
+
+  const validateDestination = (e) =>  {
+    const destination = e.target.value;
+
+    let errorMessage = '';
+       
+    if(destination.length === 0) {
+      errorMessage = 'Please give destination name.'
+    }else if(destination.length > 50){
+     errorMessage = ''
+    }
+
+
+    setError(state => ({
+   
+    }))
+
+  }
+
+  
+
+
   return (
     
     <div className="background">
       <div className="wrapper">
       <div className="title">HOST A TRIP</div>
 
-      <form  id="create" className="form" method="post" onSubmit={onSubmit}> 
+      <form  id="create" className="form" method="post" onSubmit={onSubmit} > 
 
       <div className="inputfield">
           <label htmlFor="title">Title</label>
-          <input value={values.title} onChange={changeHandler} type="text" id="title" name="title" className="input" />
+          <input 
+          value={values.title} 
+          onChange={changeHandler} 
+          onBlur={validateTitle} 
+          type="text" 
+          id="title" 
+          name="title" 
+          className="input" 
+          />
         </div>
-
+        {error.title &&
+          <div className="error">{error.title}</div>
+        }
         <div className="inputfield">
           <label htmlFor="destination">Destination</label>
           <input value={values.destination} onChange={changeHandler} type="text" id="destination" name="destination" className="input" />
@@ -70,7 +135,7 @@ export const Create = ({
         </div>
 
         <div className="inputfield">
-          <input type="submit" value="Create" className="btn" />
+          <input type="submit" value="Create" className="btn"  />
         </div>
 
 

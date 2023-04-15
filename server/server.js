@@ -1326,7 +1326,7 @@
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
                 email: "john@abv.bg",
-                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+                hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1",
             }
         },
         sessions: {
@@ -1343,7 +1343,8 @@
                 "imgUrl": '/images/img-2.jpg',
                 "description": "There is no other place like Bali in this world. A magical blend of culture, people, nature, activities, weather, culinary delights, nightlife, and beautiful accommodation.",
                 "destination": "Bali",
-                "_createdOn": 1681356240364
+                "_createdOn": 1681356240364,
+                
             },"41ecda04-a602-4c03-9694-b5211c8e0540": {
                 "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
                 "title": "Go trough the romantic Paris experience with your couple",
