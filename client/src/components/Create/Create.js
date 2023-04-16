@@ -21,7 +21,7 @@ export const Create = () => {
     people: '',
     imgUrl: '',
     description: '',
-    phone: '',
+    phone: '', 
    });
 
   const [error, setError] = useState({
@@ -32,7 +32,7 @@ export const Create = () => {
     imgUrl: '',
     description: '',
     phone: '',
-
+  
    })
     
    const onChangeHandler = (e) => {
@@ -42,6 +42,7 @@ export const Create = () => {
    const onSubmit = (e) => {
      e.preventDefault();
        createTripSubmit(values);
+       console.log(values)
       
    }
  
