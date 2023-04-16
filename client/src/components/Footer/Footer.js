@@ -87,7 +87,7 @@ export const Footer = () => {
               </Link>
               <Link
                 className='social-icon-link twitter'
-               
+                
                 target='_blank'
                 aria-label='LinkedIn'
               >
