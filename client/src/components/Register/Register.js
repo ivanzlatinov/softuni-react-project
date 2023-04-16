@@ -43,6 +43,7 @@ const [error, setError] = useState({
     email: errorMessage,
   }))
  }
+ 
 
  const validatePassword = (e) => {
   const password = e.target.value;
@@ -82,6 +83,7 @@ const [error, setError] = useState({
         <h1>Register</h1>
         <form id='register' method="post" onSubmit={onSubmit}>
 
+        
           <div className="txt_field">
             <input 
             type="text" 

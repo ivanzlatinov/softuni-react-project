@@ -156,7 +156,7 @@ export const Create = () => {
     let errorMessage = '';
     if(phone.length === 0) {
       errorMessage = 'Please enter a phone for contacts.'
-    }else if(phone.length === 10){
+    }else if(phone.length !== 10){
      errorMessage = 'Phone number length must be 10 digits'
     }else if(numberPattern.test(phone) !== true){
       errorMessage = 'Phone must be a number'

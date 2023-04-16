@@ -1390,8 +1390,7 @@
 
 
         },
-        comments: {
-        
+        bookings: {
         }
     };
     var rules$1 = {
