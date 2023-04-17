@@ -65,15 +65,11 @@ return (
                 <button className='delete-btn' onClick={onDeleteClick}>Delete</button>
             </div>
             )}
-            {!isOwner && (
-            <div className="details-options">
-            <Link href="#">Book trip</Link>
-        </div>
-            )}
+           
            
         </div>
         <div className="details-description">
-            <p> Phone for contact: {trip.phone} </p>
+            <p> Contact the host: {trip.phone} </p>
             <p>{trip.description}</p>
             
         </div>

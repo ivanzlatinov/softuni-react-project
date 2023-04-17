@@ -53,8 +53,8 @@ export const Create = () => {
       errorMessage = 'Please give a title.'
     }else if(title.length < 10) {
       errorMessage = 'Title must be atleast 10 characters.' 
-    }else if(title.length > 50){
-      errorMessage = 'Title should not be longer than 50 characters.' 
+    }else if(title.length > 75){
+      errorMessage = 'Title is too long.' 
     }else {
       setIsValid(true)
     }
@@ -140,7 +140,7 @@ export const Create = () => {
       errorMessage = 'Please enter a description.'
     }else if(description.length < 25){
      errorMessage = 'Description is too short'
-    }else if(description.length > 150){
+    }else if(description.length > 300){
       errorMessage = 'Description is too long'
      }else{
       setIsValid(true)
