@@ -6,6 +6,7 @@ import { useService } from '../../hooks/useService';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useTripContext } from '../../contexts/TripContext';
 
+
 export const TripDetails = () =>  {
 
     useEffect(() => {
@@ -16,8 +17,11 @@ export const TripDetails = () =>  {
     const { userId } = useContext(AuthContext);  
     const { tripId } = useParams();
     const [trip, setTrip] = useState({});
+   
     const tripService = useService(tripServiceFactory);
     const navigate = useNavigate();
+
+    
     
    
     useEffect(() => { 
@@ -32,8 +36,6 @@ export const TripDetails = () =>  {
     const onDeleteClick =  async () => {
         //eslint-disable-next-line no-restricted-globals
         const conformationGiven = confirm('Are you sure you want to delete your booking')
-        //showDeleteModal
-        console.log(conformationGiven)
         
         
          if(conformationGiven){

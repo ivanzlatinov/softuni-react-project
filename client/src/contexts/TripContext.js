@@ -11,7 +11,7 @@ export const TripProvider = ({
 }) => {
     const navigate = useNavigate();
     const [trips, setTrips] = useState([]);
-    const tripService = tripServiceFactory(); //auth.accessToken
+    const tripService = tripServiceFactory(); 
     
     useEffect(() => {
         tripService.getAll()
@@ -25,8 +25,8 @@ export const TripProvider = ({
     const createTripSubmit = async (data) => {
         const newTrip = await tripService.create(data);
           
-        setTrips(state => [...state, newTrip])      //updated info
-       console.log(newTrip);
+        setTrips(state => [...state, newTrip])      
+       
          navigate('/catalog');
        };
     

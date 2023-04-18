@@ -22,7 +22,7 @@ export const AuthProvider = ({
 
           navigate('/');
         } catch (error) {
-          //alert user
+          
           console.log('There is a problem')
 
         }
@@ -36,9 +36,9 @@ export const AuthProvider = ({
         }
          
         try {
-         console.log(registerData);
+         
          const result =  await authService.register(registerData);
-         console.log(result) 
+         
          setAuth(result);
    
          navigate('/');

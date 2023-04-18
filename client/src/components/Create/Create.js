@@ -42,7 +42,7 @@ export const Create = () => {
    const onSubmit = (e) => {
      e.preventDefault();
        createTripSubmit(values);
-       console.log(values)
+       
       
    }
  
