@@ -14,6 +14,12 @@ const getAll =  async () => {
    return trips;
 }
 
+ const getMyListings = async (ownerId) => {
+   let query = encodeURIComponent(`_ownerId="${ownerId}"`);
+   const result = await request.get(`${baseUrl}?where=${query}`);
+   return result;
+};
+
  const getOne = async (tripId) => {
    const result = await request.get(`${baseUrl}/${tripId}`);
    
@@ -32,6 +38,7 @@ const deleteTrip = (tripId) => request.delete(`${baseUrl}/${tripId}`)
 
 return {
    getAll,
+   getMyListings,
    getOne,
    create,
    edit,

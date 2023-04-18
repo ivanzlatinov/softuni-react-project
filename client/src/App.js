@@ -21,6 +21,7 @@ import { EditTrip } from './components/EditTrip/EditTrip';
 import { UserGuard } from './components/Guards/UserGuard';
 import { PublicGuard } from './components/Guards/PublicGuard';
 import { Owner } from './components/Guards/OwnerGuard';
+import { MyListings } from './components/MyListings/MyListings';
 
 
 
@@ -43,6 +44,7 @@ function App() {
         </Route>
         <Route element={<PublicGuard />}>
             <Route path='/create-trip' element={<Create  />} />
+            <Route path='/my-listings' element={<MyListings />} />
             <Route path='/catalog/:tripId' element={<TripDetails />} />
             <Route path='/logout' element={ <Logout  />} /> 
         <Route element={<Owner />} >

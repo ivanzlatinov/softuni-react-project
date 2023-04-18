@@ -58,6 +58,11 @@ export const Navbar = () => {
             Host a trip
             </Link>
         </li>
+        <li className="nav-item">
+            <Link to='/my-listings' className="nav-links" > 
+            My Listings
+            </Link>
+        </li>
         
         <li className="nav-item">
             <Link to='/logout' className="nav-links" > 

@@ -35,14 +35,12 @@ export const TripDetails = () =>  {
 
     const onDeleteClick =  async () => {
         //eslint-disable-next-line no-restricted-globals
-        const conformationGiven = confirm('Are you sure you want to delete your booking')
         
-        
-         if(conformationGiven){
+
              await tripService.delete(trip._id);
              deleteTrip(trip._id);
              navigate('/catalog');
-         }
+         
 
         
     }
