@@ -6,11 +6,11 @@
 
 In the project directory, you can open 2 terminals and run :
 
-### `cd client to open client folder than type npm start`
+### `cd client to open client folder then type npm start`
 
 Runs the app in the development mode.
 
-### `cd server to open server folder than type node server.js `
+### `cd server to open server folder then type node server.js `
 
 Runs the server to be used for data fetching.
 
